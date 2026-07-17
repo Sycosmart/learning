@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var detail = document.getElementById('diagramDetail');
 
   var captions = {
-    '1': 'It starts with something you do by hand today: an intake form, an email, a client update.',
-    '2': 'An AI tool reads it, understands what matters, and pulls out the useful parts.',
-    '3': 'That information moves automatically into the tools you already use, no copy and paste.',
-    '4': 'From here it just runs. You only step in when something needs your judgment.'
+    '1': 'Empieza con algo que hoy haces a mano: un formulario de ingreso, un correo, una actualización para un cliente.',
+    '2': 'Una herramienta de IA lo lee, entiende qué es lo importante y saca las partes útiles.',
+    '3': 'Esa información pasa sola a las herramientas que ya usas, sin copiar y pegar.',
+    '4': 'Desde aquí solo funciona. Tú intervienes únicamente cuando algo necesita tu criterio.'
   };
 
   function setActive(nodeNum) {
@@ -50,9 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
     node.addEventListener('click', function () { setActive(num); });
   });
 
-  /* ---------- Contact form (mailto handoff, no backend) ---------- */
+  /* ---------- Contact form (sends via WhatsApp, no backend needed) ---------- */
   var form = document.getElementById('contactForm');
   var formNote = document.getElementById('formNote');
+  var WHATSAPP_NUMBER = '59173115185'; // [Eduardo: confirmar número]
 
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -63,21 +64,20 @@ document.addEventListener('DOMContentLoaded', function () {
       var message = document.getElementById('cf-message').value.trim();
 
       if (!name || !message) {
-        if (formNote) formNote.textContent = 'Please fill in your name and message.';
+        if (formNote) formNote.textContent = 'Por favor completa tu nombre y el mensaje.';
         return;
       }
 
-      var subject = 'Interested in: ' + program;
-      var body = 'Hi Eduardo,\n\nMy name is ' + name + '.\n\n' + message + '\n\nProgram of interest: ' + program;
+      var text = 'Hola Eduardo, soy ' + name + '.\n\n'
+        + 'Me interesa: ' + program + '\n\n'
+        + message;
 
-      var mailto = 'mailto:eduardoshandeone123@gmail.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
+      var waLink = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
 
-      window.location.href = mailto;
+      window.open(waLink, '_blank', 'noopener');
 
       if (formNote) {
-        formNote.textContent = 'Opening your email app with this filled in. If nothing opens, email eduardoshandeone123@gmail.com directly.';
+        formNote.textContent = 'Abriendo WhatsApp con tu mensaje listo. Si no se abre, escribe directo al +591 73115185.';
       }
     });
   }
