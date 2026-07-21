@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Contact form (sends via WhatsApp, no backend needed) ---------- */
   var form = document.getElementById('contactForm');
   var formNote = document.getElementById('formNote');
-  var WHATSAPP_NUMBER = '59173115185'; // [Eduardo: confirmar número]
+  var WHATSAPP_NUMBER = '59173115185';
 
   if (form) {
     form.addEventListener('submit', function (e) {
