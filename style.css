@@ -80,8 +80,13 @@ a{ color:inherit; }
 .rail-top{ display:flex; flex-direction:column; gap:28px; }
 
 .rail-name{
-  display:flex; flex-direction:column; text-decoration:none; color:var(--ink);
+  display:flex; flex-direction:row; align-items:center; gap:12px; text-decoration:none; color:var(--ink);
 }
+.rail-avatar{
+  width:44px; height:44px; border-radius:50%; object-fit:cover;
+  border:1px solid var(--line); flex-shrink:0;
+}
+.rail-name-text{ display:flex; flex-direction:column; }
 .rail-name-main{
   font-family: var(--font-display); font-weight:700; font-size:22px; letter-spacing:-0.02em;
 }
@@ -308,6 +313,7 @@ main{ flex:1; min-width:0; }
     padding:16px 20px; background: var(--paper);
   }
   .rail-top{ flex-direction:row; align-items:center; gap:16px; width:100%; justify-content:space-between; }
+  .rail-avatar{ width:36px; height:36px; }
   .rail-toggle{
     display:flex; flex-direction:column; gap:5px; width:26px; background:none; border:none; cursor:pointer; padding:6px;
   }
